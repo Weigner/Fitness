@@ -2,6 +2,7 @@ package com.example.fitness;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         btnImc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getBaseContext(), ImcActivity.class);
+                startActivity(intent);
             }
         });
     }
