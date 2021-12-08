@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/btn_imc_send"
             android:text="@string/calc"
-            style="@style/ButtomFrom"
+            style="@style/ButtonFrom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_imc_heigth" />

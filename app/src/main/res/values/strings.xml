@@ -7,4 +7,5 @@
     <string name="weigth">Peso (kg)</string>
     <string name="heigth">Altura (cm)</string>
     <string name="calc">Calcular</string>
+    <string name="filds_messages">Todos os campos devem ser preenchidos</string>
 </resources>
