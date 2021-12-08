@@ -1,8 +1,10 @@
 package com.example.fitness;
 
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,14 +28,47 @@ public class ImcActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validate()){
-                    Toast.makeText(ImcActivity.this, R.string.filds_messages, Toast.LENGTH_SHORT).show();
+                if (!validate()) {
+                    Toast.makeText(ImcActivity.this, R.string.fields_messages, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                String sHeigth = editHeigth.getText().toString();
+                String sWeigth = editWeigth.getText().toString();
+
+                int heigth = Integer.parseInt(sHeigth);
+                int weigth = Integer.parseInt(sWeigth);
+
+                Log.d("teste", "resultado:" + calculateImc(heigth, weigth));
+
+                Toast.makeText(getBaseContext(), imcResponse(calculateImc(heigth, weigth)), Toast.LENGTH_SHORT).show();
+
             }
         });
+    }
 
+    @StringRes
+    private int imcResponse(double imc) {
+        if (imc < 15) {
+            return R.string.imc_severely_low_weight;
+        } else if (imc < 16) {
+            return R.string.imc_very_low_weight;
+        } else if (imc < 18.5) {
+            return R.string.imc_low_weight;
+        } else if (imc < 25) {
+            return R.string.normal;
+        } else if (imc < 30) {
+            return R.string.imc_high_weight;
+        } else if (imc < 35) {
+            return R.string.imc_so_high_weight;
+        } else if (imc < 16) {
+            return R.string.imc_severely_high_weight;
+        }
+        return R.string.imc_extreme_weight;
+    }
+
+    private double calculateImc(int heigth, int weigth) {
+        return weigth / ((double) heigth / 100 * (double) heigth / 100);
     }
 
     private boolean validate() {
