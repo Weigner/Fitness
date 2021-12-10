@@ -1,11 +1,15 @@
 package com.example.fitness;
 
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,25 +29,35 @@ public class ImcActivity extends AppCompatActivity {
 
         Button btnSend = findViewById(R.id.btn_imc_send);
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!validate()) {
-                    Toast.makeText(ImcActivity.this, R.string.fields_messages, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                String sHeigth = editHeigth.getText().toString();
-                String sWeigth = editWeigth.getText().toString();
-
-                int heigth = Integer.parseInt(sHeigth);
-                int weigth = Integer.parseInt(sWeigth);
-
-                Log.d("teste", "resultado:" + calculateImc(heigth, weigth));
-
-                Toast.makeText(getBaseContext(), imcResponse(calculateImc(heigth, weigth)), Toast.LENGTH_SHORT).show();
-
+        btnSend.setOnClickListener(view -> {
+            if (!validate()) {
+                Toast.makeText(ImcActivity.this, R.string.fields_messages, Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            String sHeigth = editHeigth.getText().toString();
+            String sWeigth = editWeigth.getText().toString();
+
+            int heigth = Integer.parseInt(sHeigth);
+            int weigth = Integer.parseInt(sWeigth);
+
+            double result = calculateImc(heigth, weigth);
+            int imcResponseId = imcResponse(result);
+
+            Log.d("teste", "resultado:" + result);
+
+            AlertDialog dialog = new AlertDialog.Builder(ImcActivity.this)
+                    .setTitle(getString(R.string.imc_response, result))
+                    .setMessage(imcResponseId)
+                    .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
+                    })
+                    .create();
+            dialog.show();
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editWeigth.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(editHeigth.getWindowToken(), 0);
+
         });
     }
 
