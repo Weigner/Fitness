@@ -17,12 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnImc = findViewById(R.id.btn_imc);
 
-        btnImc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ImcActivity.class);
-                startActivity(intent);
-            }
+        btnImc.setOnClickListener(view -> {
+            Intent intent = new Intent(getBaseContext(), ImcActivity.class);
+            startActivity(intent);
         });
     }
 }
