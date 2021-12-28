@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mainItems.add(new MainItem(2, R.drawable.ic_baseline_visibility_24, R.string.label_tmb, R.color.anonymuse));
 
         // mosaic, grid ou linear(horizontal | vertical)
-        recyclerMain.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerMain.setLayoutManager(new GridLayoutManager(this, 1));
 
         MainAdapter adapter = new MainAdapter(mainItems);
         adapter.setListener( id -> {
