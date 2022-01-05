@@ -60,7 +60,8 @@ public class SqlHelper extends SQLiteOpenHelper {
             String dateNow = dateFormat.format(new Date());
 
             values.put("created_date", dateNow);
-            db.insertOrThrow("calc", null, values);
+            calcId = db.insertOrThrow("calc", null, values);
+
             db.setTransactionSuccessful();
 
         } catch (Exception e) {
