@@ -1,7 +1,9 @@
 package com.example.fitness;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -9,7 +11,9 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class SqlHelper extends SQLiteOpenHelper {
@@ -41,6 +45,38 @@ public class SqlHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+
+    @SuppressLint("Range")
+    List<RegisterModel> getRegister(String type) {
+        List<RegisterModel> registers = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM calc WHERE type_calc = ?", new String[]{type});
+
+        try {
+
+            if (cursor.moveToFirst()) {
+                do {
+                    RegisterModel register = new RegisterModel();
+
+                    register.type = cursor.getString(cursor.getColumnIndex("type_calc"));
+                    register.response = cursor.getDouble(cursor.getColumnIndex("res"));
+                    register.createdDate = cursor.getString(cursor.getColumnIndex("created_date"));
+
+                    registers.add(register);
+                } while (cursor.moveToNext());
+            }
+
+        } catch (Exception e) {
+            Log.d("SQLite", e.getMessage(), e);
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return registers;
     }
 
     long addItem(String type, double response) {
