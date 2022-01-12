@@ -13,7 +13,7 @@
             android:name=".ListCalcActivity"
             android:exported="true" />
         <activity
-            android:name=".TmbActvity"
+            android:name=".TmbActivity"
             android:exported="true" />
         <activity
             android:name=".ImcActivity"

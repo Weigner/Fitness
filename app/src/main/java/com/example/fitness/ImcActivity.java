@@ -61,7 +61,9 @@ public class ImcActivity extends AppCompatActivity {
                             runOnUiThread(() -> {
                                 if (calcId > 0) {
                                     Toast.makeText(ImcActivity.this, R.string.calc_saved, Toast.LENGTH_SHORT).show();
-                                    openListCalcActivity();
+                                    Intent intent = new Intent(ImcActivity.this, ListCalcActivity.class);
+                                    intent.putExtra("type", "imc");
+                                    startActivity(intent);
                                 }
                             });
                         }).start();
@@ -75,6 +77,7 @@ public class ImcActivity extends AppCompatActivity {
 
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

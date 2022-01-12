@@ -3,11 +3,12 @@ package com.example.fitness;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(getBaseContext(), ImcActivity.class));
                     break;
                 case 2:
-                    startActivity(new Intent(getBaseContext(), TmbActvity.class));
+                    startActivity(new Intent(getBaseContext(), TmbActivity.class));
                     break;
             }
         });
