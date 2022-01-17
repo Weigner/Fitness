@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitness">
         <activity
-            android:name=".TmbActvity"
+            android:name=".HistoricActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ListCalcActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TmbActivity"
             android:exported="true" />
         <activity
             android:name=".ImcActivity"

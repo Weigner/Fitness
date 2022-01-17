@@ -11,6 +11,7 @@
         android:background="@color/klip"
         android:orientation="vertical"
         android:padding="12dp"
+        android:layout_margin="4dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
