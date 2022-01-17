@@ -10,8 +10,12 @@
 
 
     <color name="klip">#EB8B63</color>
+
     <color name="BretMacain">#F7D87C</color>
     <color name="anonymuse">#D10761</color>
     <color name="HartnSoul">#8F435F</color>
     <color name="icarust">#481139</color>
+
+    <color name="primaryColor">#5D00FF</color>
+    <color name="secondaryColor">#C536B2</color>
 </resources>

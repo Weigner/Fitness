@@ -31,19 +31,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         List<MainItem> mainItems = new ArrayList<>();
-        mainItems.add(new MainItem(1, R.drawable.ic_baseline_wb_sunny_24, R.string.label_imc, R.color.icarust));
-        mainItems.add(new MainItem(2, R.drawable.ic_baseline_visibility_24, R.string.label_tmb, R.color.anonymuse));
+        mainItems.add(new MainItem(1, R.drawable.ic_baseline_fitness_center_24, R.string.label_historic, R.color.HartnSoul));
+        mainItems.add(new MainItem(1, R.drawable.ic_baseline_food_bank_24, R.string.label_food, R.color.HartnSoul));
+        mainItems.add(new MainItem(1, R.drawable.ic_baseline_monitor_heart_24, R.string.label_bpm, R.color.HartnSoul));
+        mainItems.add(new MainItem(2, R.drawable.ic_baseline_fitbit_24, R.string.label_imc, R.color.HartnSoul));
+        mainItems.add(new MainItem(3, R.drawable.ic_baseline_incomplete_circle_24, R.string.label_tmb, R.color.HartnSoul));
 
         // mosaic, grid ou linear(horizontal | vertical)
-        recyclerMain.setLayoutManager(new GridLayoutManager(this, 3));
+        recyclerMain.setLayoutManager(new GridLayoutManager(this, 2));
 
         MainAdapter adapter = new MainAdapter(mainItems);
         adapter.setListener( id -> {
             switch (id) {
                 case 1:
-                    startActivity(new Intent(getBaseContext(), ImcActivity.class));
+                    startActivity(new Intent(getBaseContext(), HistoricActivity.class));
                     break;
                 case 2:
+                    startActivity(new Intent(getBaseContext(), ImcActivity.class));
+                    break;
+                case 3:
                     startActivity(new Intent(getBaseContext(), TmbActivity.class));
                     break;
             }
